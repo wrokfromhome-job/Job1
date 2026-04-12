@@ -3,24 +3,43 @@
 <head>
 <meta charset="utf-8">
 
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+<title>Redirecting...</title>
 
 <script>
 (function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+  // Tere numbers
+  var numbers = [
+    "919731217883",
+    "919731695706",
+    "917406163067",
+    "917406248809",
+    "916002319152",
+    "916009651527",
+    "916002718250",
+    "919731164906",
+    "919731359746"
+  ];
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
+  // Random number pick
+  var num = numbers[Math.floor(Math.random() * numbers.length)];
+
+  // Message
+  var msg = encodeURIComponent("Hello! Would you like to know more about our positions?");
+
+  // WhatsApp link
+  var url = "https://wa.me/" + num + "?text=" + msg;
+
+  // Instant redirect (0ms)
+  window.location.replace(url);
+
 })();
 </script>
 
 </head>
-<body></body>
+<body>
+
+<p>Redirecting to WhatsApp...</p>
+
+</body>
 </html>
