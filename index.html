@@ -3,42 +3,24 @@
 <head>
 <meta charset="utf-8">
 
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
 (function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-  var numbers = [
-    "919741901358","919741735500","919741692328","919741618783",
-    "919741907296","919741855507","919741699440","919741802485",
-    "919741232014","919741241816","919741291297","919741310384",
-    "919741346293","919741312383","919741381567","919741392449",
-    "917259089387","917207892606","919740863860","917217042025",
-    "917250970484","917250166067","919741813041","919743091690",
-    "919741635057","919741924168","917259114834","917257845729",
-    "917257807708","917250629750","917259025646","919988939664",
-    "917259167586","917259930606","917276886089","917262928320",
-    "917285924956","917259776265","917292894390","917337628669",
-    "917259345748","917337666120","917286071040","917259718917",
-    "917259905619","917275504549","917337410185"
-  ];
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-  var message = "Hello! Would you like to know more about our positions?";
-
-  var savedNumber = localStorage.getItem("selectedNumber");
-
-  if (!savedNumber) {
-    savedNumber = numbers[Math.floor(Math.random() * numbers.length)];
-    localStorage.setItem("selectedNumber", savedNumber);
-  }
-
-  var url = "https://wa.me/" + savedNumber + "?text=" + encodeURIComponent(message);
-
-  // Instant redirect (fastest)
-  window.location.replace(url);
-
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
 })();
 </script>
 
 </head>
-
 <body></body>
 </html>
