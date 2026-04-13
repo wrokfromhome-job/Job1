@@ -3,44 +3,24 @@
 <head>
 <meta charset="utf-8">
 
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
 (function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-  // 📞 New Numbers List
-  var numbers = [
-    "919964292303",
-    "919966729710",
-    "919980181829",
-    "919181400584",
-    "919342219395",
-    "919911632124",
-    "919934678730",
-    "919973893768",
-    "919313028325",
-    "919964200919"
-  ];
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-  // 💬 Message
-  var message = "Hello! Would you like to know more about our positions?";
-
-  // 💾 Same number logic
-  var savedNumber = localStorage.getItem("selectedNumber");
-
-  if (!savedNumber) {
-    savedNumber = numbers[Math.floor(Math.random() * numbers.length)];
-    localStorage.setItem("selectedNumber", savedNumber);
-  }
-
-  // 🔗 URL
-  var url = "https://wa.me/" + savedNumber + "?text=" + encodeURIComponent(message);
-
-  // ⚡ Instant redirect
-  window.location.replace(url);
-
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
 })();
 </script>
 
 </head>
-
 <body></body>
 </html>
