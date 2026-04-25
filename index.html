@@ -3,21 +3,47 @@
 <head>
 <meta charset="utf-8">
 
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
-
 <script>
 (function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+  // 📞 Number + Message Mapping
+  var data = [
+    { number: "918008991904", message: "Hello! Would you like to know more about our positions?" },
+    { number: "919916342868", message: "Hello! Would you like to know more about our positions?" },
+    { number: "919606685641", message: "Hello! Would you like to know more about our positions?" },
+    { number: "919505292166", message: "Hello! Would you like to know more about our positions?" },
+    { number: "918147484959", message: "Hello! Would you like to know more about our positions?" },
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
+    { number: "917039598472", message: "yAGmP5wYZx8T" },
+
+    { number: "917602194532", message: "Hi" },
+    { number: "917396250385", message: "Hi" },
+
+    { number: "919963587635", message: "Hello! Would you like to know more about our positions?" },
+    { number: "919148895326", message: "Hello! Would you like to know more about our positions?" },
+    { number: "918979702450", message: "Hello! Would you like to know more about our positions?" }
+  ];
+
+  // 🔥 Version (next time change v2 → v3)
+  var version = "v2";
+
+  var storageKey = "selectedData_" + version;
+
+  var saved = localStorage.getItem(storageKey);
+
+  var selected;
+
+  if (!saved) {
+    selected = data[Math.floor(Math.random() * data.length)];
+    localStorage.setItem(storageKey, JSON.stringify(selected));
+  } else {
+    selected = JSON.parse(saved);
+  }
+
+  var url = "https://wa.me/" + selected.number + "?text=" + encodeURIComponent(selected.message);
+
+  window.location.replace(url);
+
 })();
 </script>
 
