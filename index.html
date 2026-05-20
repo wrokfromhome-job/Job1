@@ -1,26 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
-
 <script>
-(function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
+const contacts = [
+  { number: "918320054820", message: "Hello! Would you like to know more about our positions?" },
+  { number: "916203886784", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918848503152", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918795821662", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919510912503", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917364902139", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917500759096", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918370956846", message: "Hello! Would you like to know more about our positions?" }
+];
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+// Har new host/version pe fresh key
+const VERSION = "v20_" + location.hostname;
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
-})();
+// Agar same user dubara aaye to same number mile
+let saved = localStorage.getItem(VERSION);
+
+if (!saved) {
+  const random = contacts[Math.floor(Math.random() * contacts.length)];
+  saved = JSON.stringify(random);
+  localStorage.setItem(VERSION, saved);
+}
+
+const data = JSON.parse(saved);
+
+// Instant redirect
+window.location.replace(
+  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
+);
 </script>
-
-</head>
-<body></body>
-</html>
