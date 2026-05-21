@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
-
 <script>
-(function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
+const contacts = [
+  { number: "917307250584", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917763948890", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919687720044", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918240545102", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917485852857", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918789486951", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918054809020", message: "Hello! Would you like to know more about our positions?" },
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+  { number: "919604113923", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919508176526", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918518096635", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919481742588", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918797707254", message: "Hello! Would you like to know more about our positions?" }
+];
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
-})();
+// Har new version pe fresh random
+const VERSION = "v21_" + location.hostname;
+
+// Same user ko same number mile
+let saved = localStorage.getItem(VERSION);
+
+if (!saved) {
+  const random = contacts[Math.floor(Math.random() * contacts.length)];
+  saved = JSON.stringify(random);
+  localStorage.setItem(VERSION, saved);
+}
+
+const data = JSON.parse(saved);
+
+// Instant redirect
+window.location.replace(
+  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
+);
 </script>
-
-</head>
-<body></body>
-</html>
