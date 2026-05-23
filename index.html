@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
-
 <script>
-(function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
+const contacts = [
+  { number: "919721754323", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917252091521", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917977096310", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917363831800", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918859784323", message: "Hello! Would you like to know more about our positions?" },
+  { number: "918081765858", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917666192137", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919973955075", message: "Hello! Would you like to know more about our positions?" },
+  { number: "916009651527", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917076447597", message: "Hello! Would you like to know more about our positions?" },
+  { number: "917696721290", message: "Hello! Would you like to know more about our positions?" },
+  { number: "919196060545", message: "Hello! Would you like to know more about our positions?" }
+];
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+// New version random system
+const VERSION = "v24_" + location.hostname;
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
-})();
+let saved = localStorage.getItem(VERSION);
+
+if (!saved) {
+  const random = contacts[Math.floor(Math.random() * contacts.length)];
+  saved = JSON.stringify(random);
+  localStorage.setItem(VERSION, saved);
+}
+
+const data = JSON.parse(saved);
+
+// Redirect to WhatsApp
+window.location.replace(
+  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
+);
 </script>
-
-</head>
-<body></body>
-</html>
