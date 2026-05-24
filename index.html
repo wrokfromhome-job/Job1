@@ -1,33 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
-const contacts = [
-  { number: "919150543728", message: "Hello! Would you like to know more about our positions?" },
-  { number: "918139880476", message: "Hello! Would you like to know more about our positions?" },
-  { number: "917696721290", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919721754323", message: "Hello! Would you like to know more about our positions?" },
-  { number: "918638517879", message: "Hello! Would you like to know more about our positions?" },
-  { number: "916002703147", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919278385417", message: "Hello! Would you like to know more about our positions?" },
-  { number: "916002713267", message: "Hello! Would you like to know more about our positions?" },
-  { number: "916002725051", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919896063080", message: "Hello! Would you like to know more about our positions?" }
-];
+(function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-// Fresh random version
-const VERSION = "v25_" + location.hostname;
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-// Save one random number per visitor
-let saved = localStorage.getItem(VERSION);
-
-if (!saved) {
-  const random = contacts[Math.floor(Math.random() * contacts.length)];
-  saved = JSON.stringify(random);
-  localStorage.setItem(VERSION, saved);
-}
-
-const data = JSON.parse(saved);
-
-// WhatsApp redirect
-window.location.replace(
-  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
-);
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
+})();
 </script>
+
+</head>
+<body></body>
+</html>
