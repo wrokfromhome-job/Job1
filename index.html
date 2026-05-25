@@ -1,26 +1,51 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-
-<!-- Instant fallback -->
-<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
-
 <script>
-(function() {
-  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
-  var web = "https://t.me/+HoSzIXcQgV80NmFl";
+const contacts = [
+  {
+    number: "918077455353",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "919670391298",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "919019889223",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "917749998872",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "919977765779",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "918491873762",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  },
+  {
+    number: "916387463452",
+    message: "Hello! We are hiring for flexible work-from-home roles. Would you like to know the tasks, timing, and payment details?"
+  }
+];
 
-  // Try opening Telegram app instantly
-  window.location.replace(app);
+// New version
+const VERSION = "v31_" + location.hostname;
 
-  // Ultra-fast fallback (if app not installed)
-  setTimeout(function() {
-    window.location.replace(web);
-  }, 200);
-})();
+// Same visitor = same number
+let saved = localStorage.getItem(VERSION);
+
+if (!saved) {
+  const random = contacts[Math.floor(Math.random() * contacts.length)];
+  saved = JSON.stringify(random);
+  localStorage.setItem(VERSION, saved);
+}
+
+const data = JSON.parse(saved);
+
+// Redirect
+window.location.replace(
+  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
+);
 </script>
-
-</head>
-<body></body>
-</html>
