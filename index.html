@@ -1,37 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
-const contacts = [
+(function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-  // Job details message
-  { number: "919648069842", message: "Hello, please send me the job details." },
-  { number: "918798082723", message: "Hello, please send me the job details." },
-  { number: "917908872588", message: "Hello, please send me the job details." },
-  { number: "918571034774", message: "Hello, please send me the job details." },
-  { number: "919691646799", message: "Hello, please send me the job details." },
-  { number: "916383417758", message: "Hello, please send me the job details." },
-  { number: "917761027406", message: "Hello, please send me the job details." },
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-  // Special numbers with old message
-  { number: "918529273741", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919305675898", message: "Hello! Would you like to know more about our positions?" }
-
-];
-
-// New version
-const VERSION = "v24_" + location.hostname;
-
-// Same visitor = same number
-let saved = localStorage.getItem(VERSION);
-
-if (!saved) {
-  const random = contacts[Math.floor(Math.random() * contacts.length)];
-  saved = JSON.stringify(random);
-  localStorage.setItem(VERSION, saved);
-}
-
-const data = JSON.parse(saved);
-
-// Redirect to WhatsApp
-window.location.replace(
-  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
-);
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
+})();
 </script>
+
+</head>
+<body></body>
+</html>
