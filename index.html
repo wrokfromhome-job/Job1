@@ -1,35 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
-localStorage.clear(); // Purana saved data remove karne ke liye
+(function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-const contacts = [
-  { number: "919123376338", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919392984420", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919178733339", message: "Hello! Would you like to know more about our positions?" },
-  { number: "918188987872", message: "Hello! Would you like to know more about our positions?" },
-  { number: "916281628029", message: "Hello! Would you like to know more about our positions?" },
-  { number: "918602890674", message: "Hello! Would you like to know more about our positions?" },
-  { number: "918279918659", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919313699447", message: "Hello" },
-  { number: "919509236900", message: "Hello! Would you like to know more about our positions?" },
-  { number: "919278385417", message: "2qz8anTPw9BX" }
-];
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-// NEW VERSION - Version ko v37 se badal kar v38 kar diya hai
-const VERSION = "v38_" + location.hostname;
-
-// Same visitor = same number logic
-let saved = localStorage.getItem(VERSION);
-
-if (!saved) {
-  const random = contacts[Math.floor(Math.random() * contacts.length)];
-  saved = JSON.stringify(random);
-  localStorage.setItem(VERSION, saved);
-}
-
-const data = JSON.parse(saved);
-
-// WhatsApp par redirect karne ke liye
-window.location.replace(
-  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
-);
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
+})();
 </script>
+
+</head>
+<body></body>
+</html>
