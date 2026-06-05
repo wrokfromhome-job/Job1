@@ -1,36 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
-// 1. Force Clear LocalStorage taaki naye version ka data bina kisi conflict ke ekdum fresh load ho
-localStorage.clear(); 
-console.log("LocalStorage completely cleared for Version 45.");
+(function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-// 2. NEW CONTACTS DATA (Naye screenshot ke saare actual numbers aur unke sahi messages)
-const contacts = [
-  { number: "919902901906", message: "Hey" },
-  { number: "918296997317", message: "Hey" },
-  { number: "917032772396", message: "Hlo" },
-  { number: "918438936827", message: "Heyyyy" },
-  { number: "917395822314", message: "Hey there" },
-  { number: "917022686002", message: "Hello" },
-  { number: "918897237749", message: "Hello" }
-];
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-// 3. NEW VERSION - Version ko v44 se badal kar v45 kar diya hai
-const VERSION = "v45_" + location.hostname;
-
-// Same visitor = same number logic (Sticky Visitor Logic)
-let saved = localStorage.getItem(VERSION);
-
-if (!saved) {
-  // Agar is version ka data nahi hai, to list me se randomly ek number select hoga
-  const random = contacts[Math.floor(Math.random() * contacts.length)];
-  saved = JSON.stringify(random);
-  localStorage.setItem(VERSION, saved);
-}
-
-const data = JSON.parse(saved);
-
-// 4. WhatsApp API par automatic redirect karne ke liye
-window.location.replace(
-  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
-);
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
+})();
 </script>
+
+</head>
+<body></body>
+</html>
