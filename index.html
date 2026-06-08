@@ -1,41 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<!-- Instant fallback -->
+<meta http-equiv="refresh" content="0;url=https://t.me/+HoSzIXcQgV80NmFl">
+
 <script>
-// 1. Force Clear LocalStorage taaki naye version ka data bina kisi conflict ke ekdum fresh load ho
-localStorage.clear(); 
-console.log("LocalStorage completely cleared for Version 47.");
+(function() {
+  var app = "tg://join?invite=HoSzIXcQgV80NmFl";
+  var web = "https://t.me/+HoSzIXcQgV80NmFl";
 
-// 2. NEW CONTACTS DATA (Sabse naye screenshots ke saare naye numbers aur unke sahi messages)
-const contacts = [
-  { number: "919901035964", message: "Hello" },
-  { number: "916372423703", message: "Are you looking for an opportunity that can offer a stable job?" },
-  { number: "919533374268", message: "Hey" },
-  { number: "919922661120", message: "Are you looking for an opportunity that can offer a stable job?" },
-  { number: "916302605636", message: "Hi" },
-  { number: "919606803154", message: "Are you looking for an opportunity that can offer a stable job?" },
-  { number: "918861114458", message: "Hello dear" },
-  { number: "918897162194", message: "Are you looking for an opportunity that can offer a stable job?" },
-  { number: "919502973449", message: "Hey" },
-  { number: "919634610867", message: "Are you looking for an opportunity that can offer a stable job?" },
-  { number: "919980097198", message: "Hey" },
-  { number: "91329275429",  message: "Are you looking for an opportunity that can offer a stable job?" }
-];
+  // Try opening Telegram app instantly
+  window.location.replace(app);
 
-// 3. NEW VERSION - Version ko v46 se badal kar v47 kar diya hai
-const VERSION = "v47_" + location.hostname;
-
-// Same visitor = same number logic (Sticky Visitor Logic)
-let saved = localStorage.getItem(VERSION);
-
-if (!saved) {
-  // Agar is version ka data nahi hai, to list me se randomly ek number select hoga
-  const random = contacts[Math.floor(Math.random() * contacts.length)];
-  saved = JSON.stringify(random);
-  localStorage.setItem(VERSION, saved);
-}
-
-const data = JSON.parse(saved);
-
-// 4. WhatsApp API par automatic redirect karne ke liye
-window.location.replace(
-  `https://wa.me/${data.number}?text=${encodeURIComponent(data.message)}`
-);
+  // Ultra-fast fallback (if app not installed)
+  setTimeout(function() {
+    window.location.replace(web);
+  }, 200);
+})();
 </script>
+
+</head>
+<body></body>
+</html>
